@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	background: var(--km-color-background);
+	font-family: var(--km-typo-font-primary-family), var(--km-typo-font-secondary-family), sans-serif;
+	font-size: var(--km-typo-sizing-default);
+}

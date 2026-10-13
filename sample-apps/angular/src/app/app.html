@@ -1,0 +1,90 @@
+<header class="masthead">
+  <span class="brand">Angular styles demo</span>
+  <button
+    class="theme-toggle"
+    type="button"
+    [attr.aria-pressed]="isDark()"
+    [attr.aria-label]="'Use ' + (isDark() ? 'light' : 'dark') + ' theme'"
+    (click)="toggleTheme()"
+  >
+    <span>Light</span>
+    <span class="toggle-track" aria-hidden="true"><span></span></span>
+    <span>Dark</span>
+  </button>
+</header>
+
+<main id="top">
+  <section class="overview" aria-labelledby="page-title">
+    <p class="eyebrow">Package preview</p>
+    <h1 id="page-title">Angular styles</h1>
+    <p class="lede">
+      A small sample of the light and dark styles published in
+      <code>&#64;pkmitra_amadeus/angular-styles</code>.
+    </p>
+    <dl class="package-facts">
+      <div>
+        <dt>Version</dt>
+        <dd>0.0.0-test.20261013023539</dd>
+      </div>
+      <div>
+        <dt>Source</dt>
+        <dd>GitHub Packages</dd>
+      </div>
+      <div>
+        <dt>Theme</dt>
+        <dd>{{ isDark() ? 'Dark' : 'Light' }}</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="palette" aria-labelledby="palette-title">
+    <div class="section-heading">
+      <p class="eyebrow">Palette</p>
+      <h2 id="palette-title">Semantic colors</h2>
+    </div>
+    <div class="swatch-grid">
+      <article class="swatch swatch-primary">
+        <span>Primary</span>
+        <code>--km-color-primary</code>
+      </article>
+      <article class="swatch swatch-accent">
+        <span>Accent</span>
+        <code>--km-color-accent</code>
+      </article>
+      <article class="swatch swatch-success">
+        <span>Success</span>
+        <code>--km-color-success</code>
+      </article>
+      <article class="swatch swatch-warning">
+        <span>Warning</span>
+        <code>--km-color-warning</code>
+      </article>
+      <article class="swatch swatch-danger">
+        <span>Danger</span>
+        <code>--km-color-danger</code>
+      </article>
+      <article class="swatch swatch-tip">
+        <span>Tip</span>
+        <code>--km-color-tip</code>
+      </article>
+    </div>
+  </section>
+
+  <section class="type-specimen" aria-labelledby="type-title">
+    <div class="section-heading">
+      <p class="eyebrow">Typography</p>
+      <h2 id="type-title">Type scale</h2>
+    </div>
+    <div class="type-lines">
+      <p class="type-display">Display / 56</p>
+      <p class="type-heading">Heading / 32</p>
+      <p class="type-body">Body / 16. Designed for useful interfaces and calm, readable detail.</p>
+      <p class="type-caption">Caption / 12 / SECONDARY INFORMATION</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Package stylesheet</span>
+  <code>{{ theme() }}.css</code>
+</footer>
