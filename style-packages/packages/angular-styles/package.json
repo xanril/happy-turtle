@@ -1,0 +1,22 @@
+{
+  "name": "@pkmitra_amadeus/angular-styles",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkmitra_amadeus/happy-turtle.git",
+    "directory": "style-packages/packages/angular-styles"
+  },
+  "style": "./dist/light.css",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/light.css",
+    "./light.css": "./dist/light.css",
+    "./dark.css": "./dist/dark.css",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

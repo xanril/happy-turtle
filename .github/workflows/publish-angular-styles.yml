@@ -1,0 +1,53 @@
+name: Publish Angular styles
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Package version to publish
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  packages: write
+
+defaults:
+  run:
+    working-directory: style-packages
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: style-packages/.nvmrc
+          cache: npm
+          cache-dependency-path: style-packages/package-lock.json
+          registry-url: https://npm.pkg.github.com
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build styles
+        run: npm run build:styles
+
+      - name: Set package version
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          version="${INPUT_VERSION:-${RELEASE_TAG#v}}"
+          npm version "$version" --no-git-tag-version --prefix packages/angular-styles
+
+      - name: Publish package
+        run: npm publish ./packages/angular-styles
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
