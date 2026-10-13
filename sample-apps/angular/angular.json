@@ -50,7 +50,7 @@
               },
               {
                 "glob": "*.css",
-                "input": "node_modules/@pkmitra_amadeus/angular-styles/dist",
+                "input": "node_modules/@pkmitra_amadeus/happy-turtle-styles/dist",
                 "output": "themes"
               }
             ],

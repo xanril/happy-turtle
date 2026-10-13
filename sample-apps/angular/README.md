@@ -1,6 +1,6 @@
 # Angular styles demo
 
-This standalone Angular app consumes `@pkmitra_amadeus/angular-styles` from GitHub Packages and demonstrates its light and dark color and typography tokens.
+This standalone Angular app consumes `@pkmitra_amadeus/happy-turtle-styles` from GitHub Packages and demonstrates its light and dark color and typography tokens.
 
 ## Run locally
 

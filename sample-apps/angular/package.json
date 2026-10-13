@@ -17,7 +17,7 @@
     "@angular/forms": "^22.0.0",
     "@angular/platform-browser": "^22.0.0",
     "@angular/router": "^22.0.0",
-    "@pkmitra_amadeus/angular-styles": "0.0.0-test.20261013023539",
+    "@pkmitra_amadeus/happy-turtle-styles": "0.0.0-test.20261013023539",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
