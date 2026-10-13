@@ -1,0 +1,28 @@
+{
+  "name": "@happy-turtle/design-tokens",
+  "version": "0.0.0",
+  "preferUnplugged": true,
+  "peerDependencies": {
+    "@ama-styling/style-dictionary": "~15.2.1",
+    "style-dictionary": "~5.4.0"
+  },
+  "peerDependenciesMeta": {
+    "@ama-styling/style-dictionary": {
+      "optional": true
+    },
+    "style-dictionary": {
+      "optional": true
+    }
+  },
+  "exports": {
+    ".": {
+      "default": "./manifest.json"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    },
+    "./*.json": {
+      "default": "./*.json"
+    }
+  }
+}

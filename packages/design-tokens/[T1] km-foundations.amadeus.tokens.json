@@ -1,0 +1,178 @@
+{
+  "km": {
+    "typo": {
+      "font": {
+        "primaryFamily": {
+          "$value": "Amadeus Neue Web",
+          "$type": "string"
+        },
+        "secondaryFamily": {
+          "$value": "Arial",
+          "$type": "string"
+        }
+      },
+      "letterSpacing": {
+        "condensed": {
+          "$value": "-1px",
+          "$type": "dimension"
+        },
+        "normal": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "spaced": {
+          "$value": "1px",
+          "$type": "dimension"
+        },
+        "xtraCondensed": {
+          "$value": "-2px",
+          "$type": "dimension"
+        },
+        "xtraSpaced": {
+          "$value": "2px",
+          "$type": "dimension"
+        }
+      },
+      "sizing": {
+        "3xlarge": {
+          "$value": "24px",
+          "$type": "dimension"
+        },
+        "4xlarge": {
+          "$value": "32px",
+          "$type": "dimension"
+        },
+        "5xlarge": {
+          "$value": "36px",
+          "$type": "dimension"
+        },
+        "6xlarge": {
+          "$value": "40px",
+          "$type": "dimension"
+        },
+        "7xlarge": {
+          "$value": "48px",
+          "$type": "dimension"
+        },
+        "8xlarge": {
+          "$value": "56px",
+          "$type": "dimension"
+        },
+        "9xlarge": {
+          "$value": "64px",
+          "$type": "dimension"
+        },
+        "default": {
+          "$value": "16px",
+          "$type": "dimension"
+        },
+        "2xlarge": {
+          "$value": "20px",
+          "$type": "dimension"
+        },
+        "large": {
+          "$value": "18px",
+          "$type": "dimension"
+        },
+        "small": {
+          "$value": "14px",
+          "$type": "dimension"
+        },
+        "xsmall": {
+          "$value": "12px",
+          "$type": "dimension"
+        }
+      },
+      "weight": {
+        "bold": {
+          "$value": "Bold",
+          "$type": "string"
+        },
+        "boldItalic": {
+          "$value": "Bold Italic",
+          "$type": "string"
+        },
+        "light": {
+          "$value": "Light",
+          "$type": "string"
+        },
+        "lightItalic": {
+          "$value": "Light Italic",
+          "$type": "string"
+        },
+        "medium": {
+          "$value": "Medium",
+          "$type": "string"
+        },
+        "mediumItalic": {
+          "$value": "Medium Italic",
+          "$type": "string"
+        },
+        "regular": {
+          "$value": "Regular",
+          "$type": "string"
+        },
+        "regularItalic": {
+          "$value": "Regular Italic",
+          "$type": "string"
+        }
+      }
+    },
+    "icons": {
+      "font": {
+        "familyDefault": {
+          "$value": "Font Awesome 6 Pro",
+          "$type": "string"
+        },
+        "familyBrands": {
+          "$value": "Font Awesome 6 Brands",
+          "$type": "string"
+        }
+      },
+      "sizing": {
+        "2xlarge": {
+          "$value": "20px",
+          "$type": "dimension"
+        },
+        "2xsmall": {
+          "$value": "12px",
+          "$type": "dimension"
+        },
+        "3xlarge": {
+          "$value": "24px",
+          "$type": "dimension"
+        },
+        "4xlarge": {
+          "$value": "32px",
+          "$type": "dimension"
+        },
+        "default": {
+          "$value": "16px",
+          "$type": "dimension"
+        },
+        "large": {
+          "$value": "18px",
+          "$type": "dimension"
+        },
+        "small": {
+          "$value": "14px",
+          "$type": "dimension"
+        }
+      },
+      "weight": {
+        "light": {
+          "$value": "light",
+          "$type": "string"
+        },
+        "regular": {
+          "$value": "regular",
+          "$type": "string"
+        },
+        "solid": {
+          "$value": "solid",
+          "$type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "km": {
+    "color": {
+      "neutral": {
+        "$value": "{base.base-950}"
+      },
+      "primary": {
+        "$value": "{blue.blue-400}"
+      },
+      "danger": {
+        "$value": "{red.red-400}"
+      },
+      "success": {
+        "$value": "{green.green-400}"
+      },
+      "warning": {
+        "$value": "{orange.orange-400}"
+      },
+      "info": {
+        "$value": "{yellow.yellow-400}"
+      },
+      "tip": {
+        "$value": "{cyan.cyan-400}"
+      },
+      "accent": {
+        "$value": "{magenta.magenta-400}"
+      },
+      "background": {
+        "$value": "{base.black}"
+      }
+    }
+  }
+}
