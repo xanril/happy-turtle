@@ -7,7 +7,8 @@ six semantic colors as the Angular demo, and previews the generated typography s
 
 ## Prerequisites
 
-- .NET 10 SDK with the MAUI workload
+- .NET 10 SDK with the MAUI workload. `HappyTurtle.Styles` requires `Microsoft.Maui.Controls` 10.0.20 or
+  later; if restore fails with `NU1605: Detected package downgrade`, run `dotnet workload update`.
 - Xcode at the version required by the installed .NET iOS workload
 - Android SDK platform required by the installed .NET Android workload
 - A GitHub account. The package is public, but GitHub Packages requires an authenticated token for every
