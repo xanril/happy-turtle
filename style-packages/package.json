@@ -5,7 +5,7 @@
   "scripts": {
     "extract": "node --env-file-if-exists=.env scripts/extract.mjs",
     "build:styles": "node style-dictionary/config.mjs",
-    "pack": "npm run build:styles && npm pack ./packages/angular-styles"
+    "pack": "npm run build:styles && npm pack ./packages/angular-styles && dotnet pack ./packages/maui-styles/HappyTurtle.Styles.csproj --configuration Release --output ./packages/maui-styles/dist"
   },
   "devDependencies": {
     "@ama-styling/figma-extractor": "15.2.1",
