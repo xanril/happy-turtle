@@ -9,6 +9,8 @@
     <Version>0.0.0</Version>
     <Authors>Happy Turtle</Authors>
     <Description>Design tokens for .NET MAUI applications.</Description>
+    <RepositoryUrl>https://github.com/xanril/happy-turtle</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>

@@ -44,7 +44,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="HappyTurtle.Styles" Version="0.0.0" />
+		<PackageReference Include="HappyTurtle.Styles" Version="0.0.0-test.20261019064041" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 	</ItemGroup>
 

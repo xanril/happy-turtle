@@ -1,0 +1,70 @@
+name: Publish MAUI styles
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Package version to publish
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  packages: write
+
+defaults:
+  run:
+    working-directory: style-packages
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: style-packages/.nvmrc
+          cache: npm
+          cache-dependency-path: style-packages/package-lock.json
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Install MAUI workload
+        run: dotnet workload install maui-android
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build styles
+        run: npm run build:styles
+
+      - name: Set package version
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          version="${INPUT_VERSION:-${RELEASE_TAG#v}}"
+          echo "PACKAGE_VERSION=$version" >> "$GITHUB_ENV"
+
+      - name: Pack package
+        run: >
+          dotnet pack ./packages/maui-styles/HappyTurtle.Styles.csproj
+          --configuration Release
+          --output ./packages/maui-styles/dist
+          -p:Version="$PACKAGE_VERSION"
+
+      - name: Publish package
+        run: >
+          dotnet nuget push "./packages/maui-styles/dist/HappyTurtle.Styles.$PACKAGE_VERSION.nupkg"
+          --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+          --api-key "$NUGET_AUTH_TOKEN"
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
