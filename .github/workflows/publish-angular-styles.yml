@@ -48,6 +48,10 @@ jobs:
           npm version "$version" --no-git-tag-version --prefix packages/angular-styles
 
       - name: Publish package
-        run: npm publish ./packages/angular-styles
+        run: |
+          version="$(node -p "require('./packages/angular-styles/package.json').version")"
+          tag=latest
+          case "$version" in *-*) tag=next ;; esac
+          npm publish ./packages/angular-styles --tag "$tag"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
