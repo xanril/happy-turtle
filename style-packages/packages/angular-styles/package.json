@@ -1,9 +1,9 @@
 {
-  "name": "@pkmitra_amadeus/happy-turtle-styles",
+  "name": "@xanril/happy-turtle-styles",
   "version": "0.0.0-test.20261019060000",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pkmitra_amadeus/happy-turtle.git",
+    "url": "git+https://github.com/xanril/happy-turtle.git",
     "directory": "style-packages/packages/angular-styles"
   },
   "style": "./dist/light.css",
