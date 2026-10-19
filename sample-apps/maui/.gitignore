@@ -1,0 +1,23 @@
+# Build and package output
+bin/
+obj/
+.packages/
+artifacts/
+TestResults/
+coverage/
+*.nupkg
+*.snupkg
+
+# User-specific IDE settings
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs and operating-system files
+*.log
+.DS_Store
+Thumbs.db

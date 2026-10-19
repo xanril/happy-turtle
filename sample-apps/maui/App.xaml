@@ -1,0 +1,39 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HappyTurtle.Demo"
+             xmlns:styles="clr-namespace:HappyTurtle.Styles;assembly=HappyTurtle.Styles"
+             x:Class="HappyTurtle.Demo.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <styles:LightTokens />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{DynamicResource {x:Static styles:StyleKeys.KmColorBackground}}" />
+            </Style>
+
+            <Style x:Key="DisplayLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontPrimaryFamily}}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizing7xlarge}}" />
+                <Setter Property="FontAttributes" Value="{DynamicResource {x:Static styles:StyleKeys.KmTypoWeightBold}}" />
+                <Setter Property="TextColor" Value="{DynamicResource {x:Static styles:StyleKeys.BasePaper}}" />
+            </Style>
+
+            <Style x:Key="SectionLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontPrimaryFamily}}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizing2xlarge}}" />
+                <Setter Property="FontAttributes" Value="{DynamicResource {x:Static styles:StyleKeys.KmTypoWeightBold}}" />
+                <Setter Property="TextColor" Value="{DynamicResource DemoTextStrong}" />
+            </Style>
+
+            <Style x:Key="BodyLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontSecondaryFamily}}" />
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizingDefault}}" />
+                <Setter Property="FontAttributes" Value="{DynamicResource {x:Static styles:StyleKeys.KmTypoWeightRegular}}" />
+                <Setter Property="TextColor" Value="{DynamicResource DemoText}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

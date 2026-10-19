@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HappyTurtle.Demo"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:styles="clr-namespace:HappyTurtle.Styles;assembly=HappyTurtle.Styles"
+             x:Class="HappyTurtle.Demo.MainPage"
+             x:DataType="local:MainPage"
+             ios:Page.UseSafeArea="True"
+             Title="Happy Turtle Styles">
+
+    <CollectionView ItemsSource="{Binding Colors}"
+              BackgroundColor="{DynamicResource {x:Static styles:StyleKeys.KmColorBackground}}"
+                    SelectionMode="None">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical"
+                             Span="2"
+                             HorizontalItemSpacing="1"
+                             VerticalItemSpacing="1" />
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.Header>
+            <VerticalStackLayout Spacing="0">
+                <Grid Padding="24,18"
+                      ColumnDefinitions="*,Auto"
+                                            BackgroundColor="{DynamicResource {x:Static styles:StyleKeys.KmColorBackground}}">
+                                        <Label FontFamily="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontPrimaryFamily}}"
+                                                     FontAttributes="{DynamicResource {x:Static styles:StyleKeys.KmTypoWeightBold}}"
+                                                     FontSize="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizingDefault}}"
+                           Text="MAUI styles demo"
+                           TextColor="{DynamicResource DemoTextStrong}"
+                           VerticalOptions="Center" />
+                    <HorizontalStackLayout Grid.Column="1" Spacing="8">
+                        <Label x:Name="ThemeLabel"
+                               FontFamily="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontSecondaryFamily}}"
+                               FontSize="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizingSmall}}"
+                               Text="Light"
+                               TextColor="{DynamicResource DemoText}"
+                               VerticalOptions="Center" />
+                        <Switch x:Name="ThemeSwitch"
+                                IsToggled="False"
+                            OnColor="{DynamicResource {x:Static styles:StyleKeys.KmColorPrimary}}"
+                                Toggled="OnThemeToggled" />
+                    </HorizontalStackLayout>
+                </Grid>
+
+                <VerticalStackLayout Padding="24,46" Spacing="16">
+                          <Label FontFamily="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontSecondaryFamily}}"
+                              FontAttributes="{DynamicResource {x:Static styles:StyleKeys.KmTypoWeightBold}}"
+                              FontSize="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizingXsmall}}"
+                           Text="PACKAGE PREVIEW"
+                              TextColor="{DynamicResource {x:Static styles:StyleKeys.KmColorPrimary}}" />
+                          <Label FontFamily="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontPrimaryFamily}}"
+                              FontAttributes="{DynamicResource {x:Static styles:StyleKeys.KmTypoWeightBold}}"
+                              FontSize="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizing5xlarge}}"
+                           Text="MAUI styles"
+                           TextColor="{DynamicResource DemoTextStrong}"
+                           SemanticProperties.HeadingLevel="Level1" />
+                    <Label Style="{StaticResource BodyLabel}"
+                           Text="A native preview of the light and dark resources packaged in HappyTurtle.Styles." />
+
+                    <Grid Margin="0,12,0,0" ColumnDefinitions="*,*,*" ColumnSpacing="12">
+                        <VerticalStackLayout>
+                            <Label Style="{StaticResource BodyLabel}" Text="VERSION" />
+                            <Label FontAttributes="Bold" Text="0.0.0" TextColor="{DynamicResource DemoTextStrong}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Style="{StaticResource BodyLabel}" Text="SOURCE" />
+                            <Label FontAttributes="Bold" Text="Local NuGet" TextColor="{DynamicResource DemoTextStrong}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2">
+                            <Label Style="{StaticResource BodyLabel}" Text="THEME" />
+                            <Label x:Name="ThemeFactLabel"
+                                   FontAttributes="Bold"
+                                   Text="Light"
+                                   TextColor="{DynamicResource DemoTextStrong}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+
+                <BoxView HeightRequest="1" Color="{DynamicResource DemoBorder}" />
+
+                <VerticalStackLayout Padding="24,32,24,18" Spacing="8">
+                          <Label FontFamily="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontSecondaryFamily}}"
+                              FontAttributes="{DynamicResource {x:Static styles:StyleKeys.KmTypoWeightBold}}"
+                              FontSize="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizingXsmall}}"
+                           Text="PALETTE"
+                              TextColor="{DynamicResource {x:Static styles:StyleKeys.KmColorPrimary}}" />
+                    <Label Style="{StaticResource SectionLabel}"
+                           Text="Semantic colors"
+                           SemanticProperties.HeadingLevel="Level2" />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </CollectionView.Header>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="local:ColorSwatch">
+                <Grid MinimumHeightRequest="112"
+                      Padding="12"
+                      BackgroundColor="{Binding Value}"
+                      RowDefinitions="*,Auto">
+                    <Label FontAttributes="Bold"
+                           FontSize="13"
+                           LineBreakMode="CharacterWrap"
+                           Text="{Binding Name}"
+                           TextColor="{Binding Foreground}" />
+                    <Label Grid.Row="1"
+                           FontFamily="monospace"
+                           FontSize="11"
+                           Text="{Binding ResourceKey}"
+                           TextColor="{Binding Foreground}" />
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+        <CollectionView.Footer>
+            <VerticalStackLayout Padding="24,40" Spacing="14">
+                <BoxView HeightRequest="1" Color="{DynamicResource DemoBorder}" />
+                  <Label FontFamily="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontSecondaryFamily}}"
+                      FontAttributes="{DynamicResource {x:Static styles:StyleKeys.KmTypoWeightBold}}"
+                      FontSize="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizingXsmall}}"
+                       Text="TYPOGRAPHY"
+                      TextColor="{DynamicResource {x:Static styles:StyleKeys.KmColorPrimary}}" />
+                  <Label FontFamily="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontPrimaryFamily}}"
+                      FontSize="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizing8xlarge}}"
+                       Text="Display / 56"
+                       TextColor="{DynamicResource DemoTextStrong}" />
+                  <Label FontFamily="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontPrimaryFamily}}"
+                      FontSize="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizing4xlarge}}"
+                       Text="Heading / 32"
+                       TextColor="{DynamicResource DemoTextStrong}" />
+                <Label Style="{StaticResource BodyLabel}"
+                       Text="Body / 16. Designed for useful interfaces and calm, readable detail." />
+                  <Label FontFamily="{DynamicResource {x:Static styles:StyleKeys.KmTypoFontSecondaryFamily}}"
+                      FontSize="{DynamicResource {x:Static styles:StyleKeys.KmTypoSizingXsmall}}"
+                       Text="CAPTION / 12 / SECONDARY INFORMATION"
+                       TextColor="{DynamicResource DemoMuted}" />
+            </VerticalStackLayout>
+        </CollectionView.Footer>
+    </CollectionView>
+
+</ContentPage>
