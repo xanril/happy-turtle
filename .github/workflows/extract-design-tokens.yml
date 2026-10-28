@@ -1,0 +1,98 @@
+name: Extract design tokens
+
+on:
+  workflow_dispatch:
+    inputs:
+      figma_file_id:
+        description: Figma file ID (leave empty to use the FIGMA_FILE_ID variable/secret or .env)
+        required: false
+        type: string
+      bump:
+        description: Version bump for packages/design-tokens when tokens change
+        required: false
+        default: patch
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      build_styles:
+        description: Also regenerate Angular CSS and MAUI XAML (npm run build:styles)
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: extract-design-tokens
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: style-packages
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: style-packages/.nvmrc
+          cache: npm
+          cache-dependency-path: style-packages/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Empty values fall back to style-packages/.env inside scripts/extract.mjs.
+      - name: Extract tokens from Figma
+        id: extract
+        run: npm run extract
+        env:
+          VERSION_BUMP: ${{ inputs.bump }}
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+          FIGMA_FILE_ID: ${{ inputs.figma_file_id || vars.FIGMA_FILE_ID || secrets.FIGMA_FILE_ID }}
+
+      - name: Build styles
+        if: ${{ inputs.build_styles }}
+        run: npm run build:styles
+
+      - name: Create pull request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          base: main
+          branch: automation/extract-design-tokens
+          delete-branch: true
+          add-paths: style-packages/packages
+          commit-message: Update design tokens to v${{ steps.extract.outputs.version }}
+          title: Update design tokens to v${{ steps.extract.outputs.version }}
+          body: |
+            Automated design token extraction from Figma.
+
+            - Version: `${{ steps.extract.outputs.version }}` (${{ inputs.bump }} bump)
+
+            - Triggered by: @${{ github.actor }}
+            - Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            - Styles rebuilt: ${{ inputs.build_styles }}
+
+      - name: Summary
+        working-directory: .
+        env:
+          PR_OPERATION: ${{ steps.cpr.outputs.pull-request-operation }}
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
+        run: |
+          if [ -n "$PR_URL" ] && [ "$PR_OPERATION" != "none" ]; then
+            echo "Pull request ${PR_OPERATION}: $PR_URL" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No token changes detected; no pull request created." >> "$GITHUB_STEP_SUMMARY"
+          fi

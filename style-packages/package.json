@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "extract": "node --env-file-if-exists=.env scripts/extract.mjs",
+    "extract": "node scripts/extract.mjs",
+    "extract:minor": "node scripts/extract.mjs --bump minor",
+    "extract:major": "node scripts/extract.mjs --bump major",
     "build:styles": "node style-dictionary/config.mjs",
     "pack": "npm run build:styles && npm pack ./packages/angular-styles && dotnet pack ./packages/maui-styles/HappyTurtle.Styles.csproj --configuration Release --output ./packages/maui-styles/dist"
   },
