@@ -1,6 +1,13 @@
 {
   "name": "Design Tokens",
   "collections": {
+    "[T1] km-foundations": {
+      "modes": {
+        "amadeus": [
+          "[T1] km-foundations.amadeus.tokens.json"
+        ]
+      }
+    },
     "[T2] km-general": {
       "modes": {
         "Light": [
@@ -18,13 +25,6 @@
         ],
         "Dark": [
           "[T0] km-palette.Dark.tokens.json"
-        ]
-      }
-    },
-    "[T1] km-foundations": {
-      "modes": {
-        "amadeus": [
-          "[T1] km-foundations.amadeus.tokens.json"
         ]
       }
     }
