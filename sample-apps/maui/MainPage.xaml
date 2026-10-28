@@ -62,7 +62,7 @@
                     <Grid Margin="0,12,0,0" ColumnDefinitions="*,*,*" ColumnSpacing="12">
                         <VerticalStackLayout>
                             <Label Style="{StaticResource BodyLabel}" Text="VERSION" />
-                            <Label FontAttributes="Bold" Text="0.0.0" TextColor="{DynamicResource DemoTextStrong}" />
+                            <Label FontAttributes="Bold" Text="{Binding StylesVersion}" TextColor="{DynamicResource DemoTextStrong}" />
                         </VerticalStackLayout>
                         <VerticalStackLayout Grid.Column="1">
                             <Label Style="{StaticResource BodyLabel}" Text="SOURCE" />

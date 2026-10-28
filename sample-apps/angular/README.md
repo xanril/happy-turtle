@@ -15,7 +15,7 @@ Authenticate GitHub CLI with `read:packages`, expose its token only for the inst
 
 ```sh
 gh auth login --scopes read:packages
-NODE_AUTH_TOKEN="$(gh auth token)" npm ci
+NODE_AUTH_TOKEN="$(gh auth token)" npm install
 npm start
 ```
 
