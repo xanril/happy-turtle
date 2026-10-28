@@ -32,8 +32,15 @@ footer {
 }
 
 .brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
 	color: var(--demo-text-strong);
 	font-weight: var(--km-typo-weight-bold);
+}
+
+.brand-icon {
+	flex: none;
 }
 
 .theme-toggle {
