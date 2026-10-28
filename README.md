@@ -20,18 +20,21 @@ when unset or empty.
 
 When any token file changes, `npm run extract` bumps the semantic version in
 `packages/design-tokens/package.json` (patch by default). If nothing changed, the
-version is left as is. To bump minor or major instead:
+version is left as is unless `--force` (or `FORCE_BUMP=true`) is passed. To bump minor
+or major instead:
 
 ```sh
 npm run extract:minor   # or: npm run extract -- --bump minor
 npm run extract:major   # or: VERSION_BUMP=major npm run extract
+npm run extract -- --force   # bump even if no token file changed
 ```
 
 The **Extract design tokens** workflow (`.github/workflows/extract-design-tokens.yml`)
 can be run at any time from **Actions → Extract design tokens → Run workflow**. It runs
 `npm run extract` with the selected `bump` (and optionally `npm run build:styles`), then
 opens or updates a pull request against `main` from the `automation/extract-design-tokens`
-branch. If nothing changed, no pull request is created.
+branch. The workflow always bumps the version (`FORCE_BUMP=true`), even when no token file
+changed, so merging the pull request always publishes new npm and NuGet packages.
 
 The publish workflows use the `packages/design-tokens` version for both the Angular npm
 package and the MAUI NuGet package. They run automatically when a push to `main` (for

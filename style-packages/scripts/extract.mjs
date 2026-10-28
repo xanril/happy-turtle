@@ -5,7 +5,8 @@
 //
 // After a successful extraction, the design-tokens package version is bumped (semver) when
 // any token file changed. Choose the release type with `--bump patch|minor|major` or the
-// VERSION_BUMP environment variable (default: patch).
+// VERSION_BUMP environment variable (default: patch). Pass `--force` or set FORCE_BUMP=true
+// to bump the version even when no token file changed.
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { appendFileSync, existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -18,8 +19,9 @@ const BUMP_TYPES = ['patch', 'minor', 'major'];
 const OUTPUT_DIR = fileURLToPath(new URL('../packages/design-tokens/', import.meta.url));
 const PACKAGE_JSON = join(OUTPUT_DIR, 'package.json');
 
-const { values: args } = parseArgs({ options: { bump: { type: 'string' } } });
+const { values: args } = parseArgs({ options: { bump: { type: 'string' }, force: { type: 'boolean' } } });
 const bump = args.bump || process.env.VERSION_BUMP || 'patch';
+const force = args.force || process.env.FORCE_BUMP === 'true';
 if (!BUMP_TYPES.includes(bump)) {
   console.error(`Invalid bump type "${bump}". Expected one of: ${BUMP_TYPES.join(', ')}.`);
   process.exit(1);
@@ -88,11 +90,11 @@ if (status !== 0) {
 }
 
 const changed = hashTokens() !== previousHash;
-const version = changed ? bumpVersion(previousVersion, bump) : previousVersion;
+const version = changed || force ? bumpVersion(previousVersion, bump) : previousVersion;
 writeVersion(version);
 
-console.log(changed
-  ? `Design tokens changed: version ${previousVersion} -> ${version} (${bump}).`
+console.log(changed || force
+  ? `Design tokens ${changed ? 'changed' : 'unchanged (forced bump)'}: version ${previousVersion} -> ${version} (${bump}).`
   : `Design tokens unchanged: version kept at ${version}.`);
 
 if (process.env.GITHUB_OUTPUT) {
