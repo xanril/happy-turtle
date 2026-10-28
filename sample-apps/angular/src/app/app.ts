@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, computed, effect, inject, signal } from '@angular/core';
+import stylesPackage from '@xanril/happy-turtle-styles/package.json';
 
 type Theme = 'light' | 'dark';
 
@@ -13,6 +14,8 @@ type Theme = 'light' | 'dark';
 })
 export class App {
   private readonly document = inject(DOCUMENT);
+
+  protected readonly stylesVersion = stylesPackage.version;
 
   protected readonly theme = signal<Theme>('light');
   protected readonly isDark = computed(() => this.theme() === 'dark');

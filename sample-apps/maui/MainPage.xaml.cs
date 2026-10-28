@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Reflection;
 using HappyTurtle.Styles;
 
 namespace HappyTurtle.Demo;
@@ -18,6 +19,8 @@ public partial class MainPage : ContentPage
 	private ResourceDictionary themeDictionary;
 
 	public ObservableCollection<ColorSwatch> Colors { get; } = [];
+
+	public string StylesVersion { get; } = GetStylesVersion();
 
 	public MainPage()
 	{
@@ -57,6 +60,18 @@ public partial class MainPage : ContentPage
 		application.Resources["DemoMuted"] = dictionary[isDark ? StyleKeys.BaseBase400 : StyleKeys.BaseBase600];
 		application.Resources["DemoBorder"] = dictionary[isDark ? StyleKeys.BaseBase700 : StyleKeys.BaseBase200];
 		application.UserAppTheme = appTheme;
+	}
+
+	private static string GetStylesVersion()
+	{
+		var assembly = typeof(StyleKeys).Assembly;
+		var version = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion
+			?? assembly.GetName().Version?.ToString()
+			?? "Unknown";
+
+		// Drop SourceLink build metadata (e.g. "+<commit sha>") to match the NuGet package version.
+		var metadataIndex = version.IndexOf('+');
+		return metadataIndex >= 0 ? version[..metadataIndex] : version;
 	}
 
 	private void LoadColors()
