@@ -46,3 +46,7 @@ npm run build
 ```
 
 Use the same new version in both commands and commit the updated dependency and lockfile together. Never reuse a published version.
+
+## Icon
+
+The favicon (`public/favicon.ico`, `public/turtle.svg`), Apple touch icon, and header logo use the turtle emoji from [Google Noto Emoji](https://github.com/googlefonts/noto-emoji) (Apache License 2.0).
