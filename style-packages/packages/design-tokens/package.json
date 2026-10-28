@@ -1,6 +1,6 @@
 {
   "name": "@happy-turtle/design-tokens",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "preferUnplugged": true,
   "peerDependencies": {
     "@ama-styling/style-dictionary": "~15.2.1",
