@@ -1,13 +1,10 @@
 {
   "name": "Design Tokens",
   "collections": {
-    "[T0] km-palette": {
+    "[T1] km-foundations": {
       "modes": {
-        "Light": [
-          "[T0] km-palette.Light.tokens.json"
-        ],
-        "Dark": [
-          "[T0] km-palette.Dark.tokens.json"
+        "amadeus": [
+          "[T1] km-foundations.amadeus.tokens.json"
         ]
       }
     },
@@ -21,10 +18,13 @@
         ]
       }
     },
-    "[T1] km-foundations": {
+    "[T0] km-palette": {
       "modes": {
-        "amadeus": [
-          "[T1] km-foundations.amadeus.tokens.json"
+        "Light": [
+          "[T0] km-palette.Light.tokens.json"
+        ],
+        "Dark": [
+          "[T0] km-palette.Dark.tokens.json"
         ]
       }
     }
