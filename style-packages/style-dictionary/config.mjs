@@ -2,7 +2,12 @@ import { baseConfig, register } from '@ama-styling/style-dictionary';
 import StyleDictionary from 'style-dictionary';
 import { mauiResourceDictionaryFormat, mauiResourceKeysFormat } from './maui-format.mjs';
 
+// Theming is defined by the [T2] semantic modes, which alias different palette steps per mode.
+// The [T0] palette is therefore always resolved from its default (Light) mode, as Figma does when
+// only the semantic collection's mode is switched. Using the inverted Dark palette here would
+// double-invert every semantic color, making dark.css resolve to the same values as light.css.
 const sharedSources = [
+  'packages/design-tokens/*km-palette.Light.tokens.json',
   'packages/design-tokens/*km-foundations.amadeus.tokens.json',
   'packages/design-tokens/*.styles.tokens.json'
 ];
@@ -53,7 +58,6 @@ for (const mode of modes) {
     ...baseConfig,
     usesDtcg: true,
     source: [
-      `packages/design-tokens/*km-palette.${mode}.tokens.json`,
       ...sharedSources,
       `packages/design-tokens/*km-general.${mode}.tokens.json`
     ],
